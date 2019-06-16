@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-card>
+  <ion-toolbar>
+    <ion-card-title>ORDERS</ion-card-title>
+  </ion-toolbar>
+</ion-card>
+</ion-header>
+
+<ion-content>
+ <ion-card style="height:10%;" (click)="pending()">
+   PENDING ORDERS
+   <h5> {{eachRest.cnt}}  </h5>
+ </ion-card> 
+ <ion-card style="height:10%;"(click)="prepared()" >
+    PREPARING ORDERS
+  </ion-card> 
+  <ion-card style="height:10%;" (click)="ready()">
+      READY ORDERS
+  </ion-card> 
+  <ion-card style="height:10%;" (click)="home()">
+      SERVED ORDERS
+    </ion-card> 
+</ion-content>
