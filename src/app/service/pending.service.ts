@@ -18,8 +18,16 @@ export class PendingService {
 
   constructor(public http: HttpClient) { }
 
+  public acceptorder(data): Observable<any> {
+    console.log('accept order service:', data);
+    return this.http.post(this.url + '/accept',data).pipe(
+      map(this.extractData));
+  }
+
   public getAllRestaurants(): Observable<any> {
     return this.http.get(this.url + '/restpend').pipe(
       map(this.extractData));
   }
+
+  
 }

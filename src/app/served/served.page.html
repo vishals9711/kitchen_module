@@ -9,7 +9,7 @@
 <ion-content >
     <div scrollx=true direction="x">
       <ion-col class="fixed">
-        <ion-card  *ngFor = "let eachRest of allRestaurantData" (click)="onClickRestaurant(eachRest)">
+        <ion-card  *ngFor = "let eachRest of allRestaurantData">
             <ion-card-title padding>ORDER NO:{{eachRest.OId}} 
                 <ion-text color="dark">
                     <h5> CUSTOMER ID: {{eachRest.CId}}  </h5>

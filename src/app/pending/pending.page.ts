@@ -20,7 +20,7 @@ export class PendingPage implements OnInit {
   public RestData: any;
   public RestNameId: any = [];
   public currentDD: any;
-
+  public orderid: any;
 
   
 
@@ -40,7 +40,21 @@ export class PendingPage implements OnInit {
       });
     }
 
+    
   ngOnInit() {
   }
+
+  accept(order) 
+  {
+    this.restaurantAPI.acceptorder(order).subscribe((data: {}) => {
+     
+     this.storage.set('Oid', data['Oid']);
+     // this.router.navigate(['/pending']);
+
+    });
+    
+     
+  }
+
 
 }
