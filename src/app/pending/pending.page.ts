@@ -22,38 +22,36 @@ export class PendingPage implements OnInit {
   public currentDD: any;
   public orderid: any;
 
-  
+
 
   constructor(public modalController: ModalController,
     private router: Router, public restaurantAPI: PendingService,
-    private storage: Storage, public events: Events)
-    {
-      this.restaurantAPI.getAllRestaurants().subscribe((data: {}) => {
-        this.allRestaurantData = data;
-        for (var eachrestaurant of this.allRestaurantData) {
-          let obj = {
-            id: eachrestaurant.CId,
-            name: eachrestaurant.ItemID,
-          }
-          this.RestNameId.push(obj);
+    private storage: Storage, public events: Events) {
+    this.restaurantAPI.getAllRestaurants().subscribe((data: {}) => {
+      this.allRestaurantData = data;
+      for (var eachrestaurant of this.allRestaurantData) {
+        let obj = {
+          id: eachrestaurant.CId,
+          name: eachrestaurant.ItemID,
         }
-      });
-    }
+        this.RestNameId.push(obj);
+      }
+    });
+  }
 
-    
+
   ngOnInit() {
   }
 
-  accept(order) 
-  {
+  accept(order) {
     this.restaurantAPI.acceptorder(order).subscribe((data: {}) => {
-     
-     this.storage.set('Oid', data['Oid']);
-     // this.router.navigate(['/pending']);
+
+      //  this.storage.set('Oid', data['Oid']);
+      // this.router.navigate(['/pending']);
 
     });
-    
-     
+
+
   }
 
 
