@@ -39,4 +39,15 @@ export class PreparedPage implements OnInit {
   ngOnInit() {
   }
 
+  accept(order) {
+    this.restaurantAPI.acceptorder(order).subscribe((data: {}) => {
+
+      //  this.storage.set('Oid', data['Oid']);
+      // this.router.navigate(['/pending']);
+
+    });
+
+
+  }
+
 }

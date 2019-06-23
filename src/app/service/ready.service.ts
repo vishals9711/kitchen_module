@@ -17,6 +17,13 @@ export class ReadyService {
   }
 
   constructor(public http: HttpClient) { }
+
+  public acceptorder(data): Observable<any> {
+    console.log('ready order service:', { data });
+    return this.http.post(this.url + '/serveAcpt', { 'data': data }).pipe(
+      map(this.extractData));
+  }
+
   public getAllRestaurants(): Observable<any> {
     return this.http.get(this.url + '/restread').pipe(
       map(this.extractData));

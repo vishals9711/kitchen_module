@@ -16,7 +16,7 @@
                     <h5> ITEM: {{eachRest.Name}}  </h5>
                     <h5>QUANTITY:  {{eachRest.qty}}  </h5>
                   </ion-text> </ion-card-title>
-           
+        <ion-button shape="round" color="success" (click)="accept(eachRest.OId)">ORDER READY {{eachRest.OId}}</ion-button>     
             
         </ion-card>
       </ion-col>
