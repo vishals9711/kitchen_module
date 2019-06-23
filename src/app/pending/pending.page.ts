@@ -45,8 +45,9 @@ export class PendingPage implements OnInit {
 
   accept(order) {
     this.restaurantAPI.acceptorder(order).subscribe((data: {}) => {
+      this.orderid = data;
+      console.log(this.orderid);
 
-      //  this.storage.set('Oid', data['Oid']);
       // this.router.navigate(['/pending']);
 
     });
