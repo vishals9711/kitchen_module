@@ -23,6 +23,8 @@ export class OrdersPage implements OnInit {
 
   passed_id: string;
   reviewData: any;
+  prepData: any;
+  readData: any;
   inputRating = 0;
   public isLoggedIn: boolean = false;
   public userName: string = '';
@@ -45,6 +47,19 @@ export class OrdersPage implements OnInit {
 
     this.restaurantAPI.getAllReviewsByRId().subscribe((data: {}) => {
       this.reviewData = data;
+      //console.log(this.reviewData);
+      
+
+    });
+
+    this.restaurantAPI.getPrep().subscribe((data: {}) => {
+      this.prepData = data;
+      //console.log(this.reviewData);
+      
+
+    });
+    this.restaurantAPI.getRead().subscribe((data: {}) => {
+      this.readData = data;
       //console.log(this.reviewData);
       
 

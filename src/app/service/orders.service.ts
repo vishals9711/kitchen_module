@@ -23,4 +23,15 @@ export class OrdersService {
       map(this.extractData));
   }
 
+
+  public getPrep(): Observable<any> {
+    return this.http.get(this.url + '/notifsP').pipe(
+      map(this.extractData));
+  }
+
+  
+  public getRead(): Observable<any> {
+    return this.http.get(this.url + '/notifsR').pipe(
+      map(this.extractData));
+  }
 }
