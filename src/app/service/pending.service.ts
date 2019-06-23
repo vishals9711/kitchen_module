@@ -20,7 +20,7 @@ export class PendingService {
 
   public acceptorder(data): Observable<any> {
     console.log('accept order service:', { data });
-    return this.http.post(this.url + '/accept', { 'data': data }).pipe(
+    return this.http.post(this.url + '/accept', { "data": data }).pipe(
       map(this.extractData));
   }
 
