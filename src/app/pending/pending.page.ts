@@ -48,6 +48,9 @@ export class PendingPage implements OnInit {
       this.orderid = data;
       console.log(this.orderid);
 
+      let index: number = this.allRestaurantData.findIndex(d => d.OId === order);
+      this.allRestaurantData.splice(index, 1);
+
       // this.router.navigate(['/pending']);
 
     });
