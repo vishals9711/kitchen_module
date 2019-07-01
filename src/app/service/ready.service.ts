@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
+import * as global from '../global';
 
 
 @Injectable({
@@ -9,7 +10,8 @@ import { map, catchError, tap } from 'rxjs/operators';
 })
 export class ReadyService {
 
-  public url = "http://127.0.0.1:3800";
+  // public url = "http://127.0.0.1:3800";
+  private url = global.apiUrl;
 
   private extractData(res: Response) {
     let body = res;

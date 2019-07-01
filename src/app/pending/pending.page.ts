@@ -16,19 +16,47 @@ export class PendingPage implements OnInit {
   public restaurantName: string = '';
   public restaurantAddress: string = '';
   public allRestaurantData: any;
+  restData = [];
   searchRest: string;
   public RestData: any;
   public RestNameId: any = [];
   public currentDD: any;
   public orderid: any;
+  public note: string = '';
+  count: number = 0;
+  test: string = '';
 
 
 
   constructor(public modalController: ModalController,
     private router: Router, public restaurantAPI: PendingService,
     private storage: Storage, public events: Events) {
+
+  }
+
+
+  ngOnInit() {
     this.restaurantAPI.getAllRestaurants().subscribe((data: {}) => {
       this.allRestaurantData = data;
+
+      console.log(this.allRestaurantData);
+      for (var each of this.allRestaurantData) {
+        this.restaurantAPI.getNote(each.OId).subscribe((data: {}) => {
+          console.log("Insert data output")
+          this.test = data[0].noteToChef;
+
+
+          let obj = {
+            id: each.OId,
+            cust: each.CId,
+            name: each.Name,
+            note: this.test,
+            qty: each.qty
+          }
+          this.restData.push(obj)
+
+        });
+      }
       for (var eachrestaurant of this.allRestaurantData) {
         let obj = {
           id: eachrestaurant.CId,
@@ -37,10 +65,7 @@ export class PendingPage implements OnInit {
         this.RestNameId.push(obj);
       }
     });
-  }
 
-
-  ngOnInit() {
   }
 
   accept(order) {
