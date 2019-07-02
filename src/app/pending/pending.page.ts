@@ -40,9 +40,10 @@ export class PendingPage implements OnInit {
       this.allRestaurantData = data;
 
       console.log(this.allRestaurantData);
-      for (var each of this.allRestaurantData) {
+      for (let each of this.allRestaurantData) {
         this.restaurantAPI.getNote(each.OId).subscribe((data: {}) => {
           console.log("Insert data output")
+          console.log(data)
           this.test = data[0].noteToChef;
 
 
@@ -54,6 +55,7 @@ export class PendingPage implements OnInit {
             qty: each.qty
           }
           this.restData.push(obj)
+          console.log(obj)
 
         });
       }
@@ -73,8 +75,8 @@ export class PendingPage implements OnInit {
       this.orderid = data;
       console.log(this.orderid);
 
-      let index: number = this.allRestaurantData.findIndex(d => d.OId === order);
-      this.allRestaurantData.splice(index, 1);
+      let index: number = this.restData.findIndex(d => d.id === order);
+      this.restData.splice(index, 1);
 
       // this.router.navigate(['/pending']);
 

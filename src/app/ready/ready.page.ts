@@ -22,19 +22,18 @@ export class ReadyPage implements OnInit {
 
   constructor(public modalController: ModalController,
     private router: Router, public restaurantAPI: ReadyService,
-    private storage: Storage, public events: Events)
-    {
-      this.restaurantAPI.getAllRestaurants().subscribe((data: {}) => {
-        this.allRestaurantData = data;
-        for (var eachrestaurant of this.allRestaurantData) {
-          let obj = {
-            id: eachrestaurant.CId,
-            name: eachrestaurant.ItemID,
-          }
-          this.RestNameId.push(obj);
+    private storage: Storage, public events: Events) {
+    this.restaurantAPI.getAllRestaurants().subscribe((data: {}) => {
+      this.allRestaurantData = data;
+      for (var eachrestaurant of this.allRestaurantData) {
+        let obj = {
+          id: eachrestaurant.CId,
+          name: eachrestaurant.ItemID,
         }
-      });
-    }
+        this.RestNameId.push(obj);
+      }
+    });
+  }
 
   ngOnInit() {
   }
@@ -46,6 +45,8 @@ export class ReadyPage implements OnInit {
       // this.router.navigate(['/pending']);
 
     });
+    let index: number = this.allRestaurantData.findIndex(d => d.id === order);
+    this.allRestaurantData.splice(index, 1);
 
 
   }

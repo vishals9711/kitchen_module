@@ -26,8 +26,7 @@ export class PendingService {
       map(this.extractData));
   }
   public getNote(data): Observable<any> {
-    console.log('inside getNote service');
-    console.log(data)
+
     return this.http.post(this.url + '/getNote', { id: data }).pipe(
       map(this.extractData));
   }
